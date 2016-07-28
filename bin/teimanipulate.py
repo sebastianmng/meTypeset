@@ -278,7 +278,7 @@ class TeiManipulate(Manipulate):
                     ref_parent = ref.getparent()
 
                     ref_parent.addnext(ref)
-                    if ref_parent.getparent() is not None:  
+                    if ref_parent.getparent() is not None:
                       ref_parent.getparent().remove(ref_parent)
         else:
             for ref in tree.xpath(xpath, namespaces={'tei': 'http://www.tei-c.org/ns/1.0'}):
@@ -552,12 +552,15 @@ class TeiManipulate(Manipulate):
         change_element = None
 
         for child in tree.xpath(xpath, namespaces={'tei': 'http://www.tei-c.org/ns/1.0'}):
-            if child.text.startswith(start_text):
-                child.text = child.text.replace(start_text, '')
-                try:
-                    change_element = child.getparent().getparent()
-                except:
-                    pass
+            try:
+              if child.text.startswith(start_text):
+                  child.text = child.text.replace(start_text, '')
+                  try:
+                      change_element = child.getparent().getparent()
+                  except:
+                      pass
+            except:
+              pass
 
         if not change_element is None:
             # change the "sec" above to "p"

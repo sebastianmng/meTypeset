@@ -141,7 +141,7 @@ class CaptionClassifier(Debuggable):
 
                 while parent is not None and not parent.tag.endswith('sec'):
                     parent = parent.getparent()
-                    if parent is not None
+                    if parent is not None:
                       titles = parent.xpath('title')
                 else:
                     titles = []

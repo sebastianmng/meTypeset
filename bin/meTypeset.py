@@ -172,16 +172,16 @@ class MeTypeset (Debuggable):
             # aggression 4
             found_bibliography = BibliographyAddins(self.gv).run()
 
-            # run list classifier
-            # aggression 4
-            ListClassifier(self.gv).run()
-
             bibliography_classifier = BibliographyClassifier(self.gv)
 
             if not found_bibliography:
                 # run bibliographic classifier
                 # aggression 4
                 bibliography_classifier.run()
+
+            # run list classifier
+            # aggression 4
+            ListClassifier(self.gv).run()
 
             # tei
             # aggression 3
